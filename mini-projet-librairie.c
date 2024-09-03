@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#define MAX_LIVRES 100
 
 typedef struct {
     char titre[20];
@@ -9,7 +10,9 @@ typedef struct {
     int quantite;
 } Livre;
 
-int nombre_livre;
+Livre stock[MAX_LIVRES];
+
+int nombre_livre=0;
 int ajouter_livre();
 int afficher_livre();
 int rechercher_livre();
@@ -70,12 +73,25 @@ int ajouter_livre(){
     scanf("%f",&nouveau_livre.prix);
     printf("entrez la quantite des livres :");
     scanf("%f",&nouveau_livre.quantite);
+    stock[nombre_livre] = nouveau_livre;
     nombre_livre++;
     printf("Livre ajouté avec succès !\n");
     
 }
 
 int afficher_livre(){
-    
+    if(nombre_livre ==0){ printf("le stock est vide !");}
+    return;
+    for(int i=0;i<=nombre_livre){
+        printf("livre %d \n",i+1);
+        printf("le titre est : %s \n",stock[i].titre);
+        printf("l auteur est : %s \n",stock[i].auteur);
+        printf("le prix est : %.2f \n",stock[i].prix);
+        printf("la quantite est : %d \n",stock[i].quantite);
+    }
+        
+}
+
+int rechercher_livre(){
     
 }
