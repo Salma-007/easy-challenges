@@ -3,18 +3,22 @@
 #include <string.h>
 
 int main() {
-  int t[10]={1,2,2,4,5,7,7,8,9,9};
+  int t[10]={1,2,7,4,5,7,7,8,9,9};
+  int count;
  
   for(int i = 0; i< 10; i++){
-      for(int j = i+1; j < 9 ; j++){
+      count=0;
+      for(int j = i+1; j < 10 ; j++){
           if(t[i] == t[j]){
-              break;
+              count++;
           }
           else{ 
-              printf("%d", t[i]);
+              continue;
           }
       }
+      if(count == 0){
+          printf("%d",t[i]);
+      }
   }
-
     return 0;
 }
