@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h> // Ajouté pour strtok
+#include <string.h> 
 #define MAX_LIVRES 100
 
 typedef struct {
