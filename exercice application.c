@@ -12,9 +12,6 @@ int main() {
           if(t[i] == t[j]){
               count++;
           }
-          else{ 
-              continue;
-          }
       }
       if(count == 0){
           printf("%d",t[i]);
