@@ -56,15 +56,18 @@ int ajouter_contact(){
     
     Contact nouveau_contact;
     
-    printf("tapez le nom du contact :\n");
-    fgets(nouveau_contact.nom, sizeof(nouveau_contact.nom),stdin);
-    strtok(nouveau_contact.nom,"\n");
-    printf("tapez le telephone du contact :\n");
-    fgets(nouveau_contact.tlf, sizeof(nouveau_contact.tlf),stdin);
-    strtok(nouveau_contact.tlf,"\n");
-    printf("tapez l email du contact :\n");
-    fgets(nouveau_contact.email, sizeof(nouveau_contact.tlf),stdin);
-    strtok(nouveau_contact.email,"\n");
+    printf("Tapez le nom du contact :\n");
+    fgets(nouveau_contact.nom, sizeof(nouveau_contact.nom), stdin);
+    strtok(nouveau_contact.nom, "\n");
+
+    printf("Tapez le téléphone du contact :\n");
+    fgets(nouveau_contact.tlf, sizeof(nouveau_contact.tlf), stdin);
+    strtok(nouveau_contact.tlf, "\n");
+
+    printf("Tapez l'email du contact :\n");
+    fgets(nouveau_contact.email, sizeof(nouveau_contact.email), stdin);
+    strtok(nouveau_contact.email, "\n");
+    
     if( count < max){
         stock[count] = nouveau_contact;
         count++;
@@ -77,9 +80,9 @@ int ajouter_contact(){
 
 int modifier_contact(){
     char search[20];
-    printf("tapez le nom du contatct :\n");
-    fgets(search, sizeof(search) ,stdin);
-    strtok(search,"\n");
+    printf("Tapez le nom du contact à modifier :\n");
+    fgets(search, sizeof(search), stdin);
+    strtok(search, "\n");
 
     if (recherche(search) != 0){
         printf("tapez le nouveau nom du contact : \n");
@@ -97,16 +100,15 @@ int rechercher_contact(){
     printf("tapez le nom du contatct :\n");
     fgets(search,sizeof(search),stdin);
     strtok(search,"\n");
-    if ( recherche(search) != 0 ){
+    if ( recherche(search) != -1 ){
 
-        printf("le nom du contact est  : \n",&stock[recherche(search)].nom);
-        printf("l email du contact est  : \n",&stock[recherche(search)].email);
-        printf("le telephone du contact est  : \n",&stock[recherche(search)].tlf);
+        printf("le nom du contact est  : \n",stock[recherche(search)].nom);
+        printf("l email du contact est  : \n",stock[recherche(search)].email);
+        printf("le telephone du contact est  : \n",stock[recherche(search)].tlf);
 
     }
     
 }
-
 
 
 int recherche ( char* a  ){
@@ -116,7 +118,7 @@ int recherche ( char* a  ){
         }
         else{
             printf("contact invalide !");
-            return 0;
+            return -1;
         }
     }
     
