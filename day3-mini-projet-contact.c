@@ -144,7 +144,7 @@ int afficher_contact(){
         printf("Contact %d :\n",i+1);
         printf("le nom est: %s \n",stock[i].nom);
         printf("le email est: %s \n",stock[i].email);
-        printf("le telephone est: %s \n",stock[i].tlf);
+        printf("le telephone est: %s \n \n",stock[i].tlf);
     }
     }
     else{
@@ -155,6 +155,20 @@ int afficher_contact(){
 
 
 int supprimer_contact() {
-    // Implémentation à ajouter
-    return 0;
+    char search[20];
+    printf("entrez le nom du contact :\n");
+    scanf(" %[^\n]",&search);
+    if( recherche(search)!= -1){
+        for(int j= recherche(search) ; j<count; j++){
+            stock[j] = stock[j+1];
+            count--;
+        }
+
+        printf("contact supprime! \n");
+    }
+    else{
+        printf("contact non valide ! \n");
+    }
+
+
 }
