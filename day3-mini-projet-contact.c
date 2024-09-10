@@ -22,6 +22,7 @@ int recherche(char*);
 
 int main() {
     int a;
+
     do {
         printf("1- Ajouter contact \n");
         printf("2- Modifier contact \n");
@@ -31,7 +32,8 @@ int main() {
         printf("0- Quitter programme \n");
 
         scanf("%d", &a);
-        while (getchar() != '\n'); // Vider le tampon d'entrée
+
+
         switch(a) {
             case 1:
                 ajouter_contact();
@@ -40,7 +42,7 @@ int main() {
                 modifier_contact();
                 break;
             case 3:
-                supprimer_contact(); // Activer cette fonction si implémentée
+                supprimer_contact();
                 break;
             case 4:
                 rechercher_contact();
@@ -53,11 +55,15 @@ int main() {
                 break;
             default:
                 printf("Tapez un nombre de la liste svp !\n");
+
+
         }
     } while (a != 0);
 
     return 0;
 }
+
+
 
 int ajouter_contact() {
 
@@ -88,26 +94,22 @@ int modifier_contact() {
 
     char search[20];
     printf("Tapez le nom du contact à modifier :\n");
-    fgets(search, sizeof(search), stdin);
-    strtok(search, "\n");
+    scanf(" %[^\n]",&search);
 
     int index = recherche(search);
     if (index != -1) {
         printf("Tapez le nouveau nom du contact :\n");
-        fgets(stock[index].nom, sizeof(stock[index].nom), stdin);
-        strtok(stock[index].nom, "\n");
+        scanf(" %[^\n]",&stock[index].nom);
 
         printf("Tapez le nouveau téléphone du contact :\n");
-        fgets(stock[index].tlf, sizeof(stock[index].tlf), stdin);
-        strtok(stock[index].tlf, "\n");
+        scanf(" %[^\n]",&stock[index].tlf);
 
         printf("Tapez le nouveau email du contact :\n");
-        fgets(stock[index].email, sizeof(stock[index].email), stdin);
-        strtok(stock[index].email, "\n");
+        scanf(" %[^\n]",stock[index].email);
 
         printf("Contact modifié avec succès !\n");
     } else {
-        printf("Contact non trouvé !\n");
+        printf("Contact invalide !\n");
     }
     return 0;
 }
@@ -124,7 +126,7 @@ int rechercher_contact() {
         printf("L'email du contact est : %s\n", stock[index].email);
         printf("Le téléphone du contact est : %s\n", stock[index].tlf);
     } else {
-        printf("Contact non trouvé !\n");
+        printf("Contact invalide !\n");
     }
     return 0;
 }
@@ -139,6 +141,7 @@ int recherche(char* a) {
 }
 
 int afficher_contact(){
+
     if(count!=0){
     for(int i=0; i<count; i++){
         printf("Contact %d :\n",i+1);
@@ -167,7 +170,7 @@ int supprimer_contact() {
         printf("contact supprime! \n");
     }
     else{
-        printf("contact non valide ! \n");
+        printf("contact invalide ! \n");
     }
 
 
